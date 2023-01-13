@@ -1,6 +1,6 @@
 # Zigzag Clone
 
-<h3> HyperCasul Game </h3> 
+<h3> HyperCasual Game </h3> 
 
 ## Goal
 Colourful and Endless ZigZag Parkour!
