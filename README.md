@@ -3,7 +3,7 @@
 <h3> HyperCasul Game </h3> 
 
 ## Goal
-Endless ZigZag Parkour!
+Colourful and Endless ZigZag Parkour!
 
 ## Controls
 Change your direction by clicking the mouse!
