@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BallInputController : MonoBehaviour
 {
     [HideInInspector] public Vector3 ballDirection;
 
+    private int scoreValue;
+    
+    [SerializeField] public TextMeshProUGUI score;
+    
     void Start()
     {
         ballDirection = Vector3.left;
@@ -15,6 +18,7 @@ public class BallInputController : MonoBehaviour
     void Update()
     {
         HandleBallInput();
+        HandleScoreText();
     }
 
     private void HandleBallInput()
@@ -22,7 +26,13 @@ public class BallInputController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             ChangeBallDirection();
+            scoreValue++;
         }
+    }
+
+    private void HandleScoreText()
+    {
+        score.text = scoreValue.ToString();
     }
 
     private void ChangeBallDirection()

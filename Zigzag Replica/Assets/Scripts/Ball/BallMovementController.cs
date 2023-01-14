@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +7,9 @@ public class BallMovementController : MonoBehaviour
     [SerializeField] private BallDataTransmitter ballDataTransmitter;
 
     [SerializeField] private float ballMoveSpeed;
-    
 
+    [SerializeField ] private float checkBallSpeedPoint = 10f;
+    
     private void Update()
     {
         SetBallMovement();
@@ -19,15 +18,25 @@ public class BallMovementController : MonoBehaviour
     private void SetBallMovement()
     {
         transform.position += ballDataTransmitter.GetBallDirection() * ballMoveSpeed * Time.deltaTime;
-        restartGame();
+        IncreaseBallSpeed();
+        if (transform.position.y < -6)
+        {
+            restartGame();
+        }
     }
 
+    private void IncreaseBallSpeed()
+    {
+        if (transform.position.x < -checkBallSpeedPoint || transform.position.z > checkBallSpeedPoint)
+        {
+            ballMoveSpeed+= 0.3f;
+            checkBallSpeedPoint += 10;
+        }
+    }
 
     private void restartGame()
     {
-        if (transform.position.y < -6)
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
+        
     }
 }
